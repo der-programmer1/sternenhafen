@@ -1,0 +1,1 @@
+{"name":"Sternenhafen","short_name":"Sternenhafen","description":"Dein Licht am Rand des Alls. Ein Browser-Aufbauspiel.","start_url":"./","scope":"./","display":"standalone","background_color":"#0a111e","theme_color":"#101c2b","icons":[{"src":"assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]}
