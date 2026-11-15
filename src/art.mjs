@@ -2,6 +2,8 @@ import {MODULES} from './content.mjs';
 import {buildSites,isBuildable,moduleAt} from './engine.mjs';
 
 const PATHS={
+  copy:'<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V3H3v13h5"/>',
+  compare:'<path d="M3 7h18m-5-5 5 5-5 5M21 17H3m5-5-5 5 5 5"/>',
  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/>',
  gem:'<path d="m7 3-5 6 10 13L22 9l-5-6Zm-5 6h20M7 3l5 19L17 3"/>',
  coin:'<circle cx="12" cy="12" r="9"/><path d="M15.5 7.5c-5-3-8 5-4.5 7.5 1.5 1 3 1 4.5 0M6 10h8M6 13h7"/>',

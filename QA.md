@@ -1,11 +1,13 @@
-# Prüfung der ersten vollständigen Fassung
+# Prüfung von Sternenhafen 1.1
 
-Stand: 15. November 2026. Die erste vollständige Fassung wurde mit den folgenden Spiel- und Browserprüfungen validiert.
+Stand: 15. November 2026. Die Fassung mit Freundesrangliste und Stationsvergleich wurde mit den folgenden Spiel- und Browserprüfungen validiert.
 
-- **Spielkern:** 27 bestandene Node-Tests. Geprüft werden unter anderem zusammenhängender Bau, Personaleinsatz, Energie, Forschungsabhängigkeiten, Recycling, Expeditionen, einmalige Fragmente, Missionsbelohnungen, Speichergrenzen, Pausen, Offline-Fortschritt sowie beschädigte und manipulierte Importe.
+- **Spielkern und Vergleiche:** 46 bestandene Node-Tests. Geprüft werden unter anderem zusammenhängender Bau, Personaleinsatz, Energie, Forschungsabhängigkeiten, Recycling, Expeditionen, einmalige Fragmente, Missionsbelohnungen, Speichergrenzen, Pausen, Offline-Fortschritt sowie beschädigte und manipulierte Importe. Die Vergleichstests prüfen öffentliche Profilfelder, Punkte, Kategorie-Rangfolgen, Gleichstände, Link-Codierung, Kapazitätsgrenzen, Aktualisierungen und stabile Stationskennungen.
 - **Kampagne mit regulären Ressourcen:** Ein deterministischer Durchlauf erreicht das Leuchtfeuer nach 1.417 Sekunden Spielzeit, mit 15 Modulen und sechs Crew-Mitgliedern. Keine während des Durchlaufs künstlich hinzugefügten Ressourcen. Das misst die wirtschaftliche Erreichbarkeit, nicht die Zeit, die Menschen für Entscheidungen und Bergungsflüge benötigen.
 - **Desktop-Browser:** Einstieg von der ersten Konstruktion bis zur abgeschlossenen Expedition und dem ersten Fragment tatsächlich durchgespielt. Bergungsflug gesteuert, beendet und Fracht verbucht. Alle acht Spielfenster geöffnet. Autosave, Neuladen, Dateiexport, bestätigter Import und Ablehnung einer beschädigten Datei geprüft.
 - **Mobiler Browser:** 390 × 844 Pixel, echte Touch-Ereignisse für Baumenü, Solarsegel und Kapitelabschluss. Forschung geöffnet, keine horizontale Überbreite. Die untere Navigation bleibt sichtbar.
+- **Vergleich zwischen Browsern:** Zwei getrennte Browser-Sitzungen tauschen echte Stationsprofile aus. Öffnen und Merken eines Links vor dem Spielstart, Kategorien, Gleichstände, Duplikate, eigene Links, Umbenennung und ein neuerer Stand wurden geprüft. Ein älterer Link setzt den Vergleich nicht zurück. Speicherung und Spielstand-Import behalten die Stationskennung; das Profil verändert den eigenen Spielstand nicht. Ungültige Links sowie HTML-Zeichen im Stationsnamen werden sicher behandelt. Bei gesperrter Zwischenablage erscheint ein manuell kopierbarer Link.
+- **Mobile Vergleiche:** Geteilte Stationen auf einem 390 × 844 großen Touch-Display geöffnet, gemerkt und verglichen. Ungültige Einladungen und die neue Navigation auch bei 320 Pixel Breite geprüft, ohne horizontale Überbreite.
 - **Einzeldatei:** Über HTTP mit Bauen, Kapitelabschluss, Sound, Bergungsflug und Frachtaufnahme geprüft. Keine zusätzlichen Netzwerkanfragen und keine JavaScript-Fehler. Der Aufruf von `file://` wird durch die Browser-Verwaltung dieser Cloud-Umgebung blockiert; dieser Aufrufweg konnte hier deshalb nicht geprüft werden.
 - **Statischer Build:** Unter `/dist/` auf einem Unterpfad geöffnet, alle sechs Ressourcenanzeigen vorhanden, keine JavaScript-Fehler. Dies prüft die relative Pfadstruktur für GitHub Pages.
 

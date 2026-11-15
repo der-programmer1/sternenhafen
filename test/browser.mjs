@@ -38,8 +38,8 @@ try{
   await page.locator('#import-file').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{"version":1}')});await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>localStorage.getItem('sternenhafen.save.v1')),before);assert.match(await page.locator('#toast-stack').innerText(),/nicht verändert/);
   await page.locator('#import-file').setInputFiles(output+'/browser-save.json');await page.locator('[data-action="confirm-import"]').click();assert.match(await page.locator('#station-name').innerText(),/Testhafen/);
   await page.reload();await page.locator('#start-button').click();assert.match(await page.locator('#station-name').innerText(),/Testhafen/);state=JSON.parse(await page.evaluate(()=>localStorage.getItem('sternenhafen.save.v1')));assert.equal(state.missionIndex,7);assert.equal(state.stats.expeditions,1);console.log('✓ Autosave, Reload, JSON-Export, Importbestätigung und Ablehnung kaputter Dateien');
-  for(const name of ['research','crew','map','log','trade','achievements','help','settings']){await page.locator('[data-panel="'+name+'"]').first().click();assert.ok((await page.locator('#dialog-body').innerText()).length>80);await close();}
-  console.log('✓ Alle 8 Spielbereiche öffnen und schließen ohne Browserfehler');
+  for(const name of ['research','crew','map','log','trade','achievements','help','settings','social']){await page.locator('[data-panel="'+name+'"]').first().click();assert.ok((await page.locator('#dialog-body').innerText()).length>80);await close();}
+  console.log('✓ Alle 9 Spielbereiche öffnen und schließen ohne Browserfehler');
   // A separate context keeps the hand-played save independent of the visual fixture.
   await context.close();const showcaseContext=await browser.newContext({viewport:{width:1440,height:1000}});
   const showcase=await showcaseContext.newPage();showcase.on('pageerror',e=>errors.push(e.message));await showcase.goto(base+'/');

@@ -3,8 +3,9 @@ import {VERSION,MODULES,TECHS,MISSIONS,SECTORS,CREW_POOL,EVENTS,ACHIEVEMENTS,CON
 export const MAX_OFFLINE=1800;
 const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
 const failure=error=>({ok:false,error});
+function newStationId(){return globalThis.crypto?.randomUUID?.()||'sh_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,14);}
 export function createGame(name='Aurelia',seed=Date.now()){
-  return {version:VERSION,name:String(name).trim().slice(0,24)||'Aurelia',time:0,seed:Math.abs(Number(seed)||1)>>>0,nextId:3,
+  return {version:VERSION,stationId:newStationId(),name:String(name).trim().slice(0,24)||'Aurelia',time:0,seed:Math.abs(Number(seed)||1)>>>0,nextId:3,
     resources:{credits:240,alloy:105,crystal:25,science:0,relic:0},
     modules:[{id:'m1',type:'core',x:0,y:0,level:1,assigned:null},{id:'m2',type:'mine',x:1,y:0,level:1,assigned:'ivo'}],
     crew:CREW_POOL.slice(0,3).map(c=>({...c,level:1,xp:0})),techs:[],expeditions:[],fragments:[],
@@ -115,6 +116,7 @@ function number(v,name,min=0,max=1e10){if(typeof v!=='number'||!Number.isFinite(
 export function restore(input){
   const raw=typeof input==='string'?JSON.parse(input):input;if(!raw||raw.version!==VERSION)throw new Error('Dieser Spielstand gehört nicht zu dieser Spielversion.');
   const s=createGame(raw.name,raw.seed);s.name=String(raw.name||'Aurelia').replace(/[\u0000-\u001f]/g,'').slice(0,24)||'Aurelia';s.time=number(raw.time,'Spielzeit',0,1e9);s.seed=number(raw.seed,'Zufall',0,4294967295)>>>0;
+  if(raw.stationId!==undefined){if(typeof raw.stationId!=='string'||!/^[a-zA-Z0-9_-]{8,64}$/.test(raw.stationId))throw new Error('Ungültige Stationskennung.');s.stationId=raw.stationId;}
   for(const key of Object.keys(s.resources))s.resources[key]=number(raw.resources?.[key],key);
   if(!Array.isArray(raw.modules)||raw.modules.length<1||raw.modules.length>121)throw new Error('Ungültige Stationsmodule.');
   const ids=new Set(),positions=new Set();s.modules=raw.modules.map(m=>{if(typeof m.type!=='string'||!Object.hasOwn(MODULES,m.type)||typeof m.id!=='string'||!/^m\d{1,9}$/.test(m.id)||ids.has(m.id))throw new Error('Ungültiges Modul.');ids.add(m.id);const x=number(m.x,'Position',-5,5),y=number(m.y,'Position',-5,5),level=number(m.level,'Stufe',1,3);if(!Number.isInteger(x)||!Number.isInteger(y)||!Number.isInteger(level)||positions.has(x+','+y)||['core','beacon'].includes(m.type)&&level!==1)throw new Error('Ungültiges Baufeld oder Modulstufe.');positions.add(x+','+y);return {id:m.id,type:m.type,x,y,level,assigned:typeof m.assigned==='string'?m.assigned:null};});

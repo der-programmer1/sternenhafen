@@ -1,15 +1,16 @@
 {
   "name": "sternenhafen",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "description": "Ein atmosphärisches Browser-Aufbauspiel am Rand des Alls.",
   "scripts": {
     "dev": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
-    "test": "node --test test/engine.test.mjs",
+    "test": "node --test test/engine.test.mjs test/social.test.mjs",
     "test:browser": "node test/browser.mjs",
-    "build:standalone": "node scripts/standalone.mjs"
+    "build:standalone": "node scripts/standalone.mjs",
+    "test:social-browser": "node test/social-browser.mjs"
   },
   "devDependencies": {
     "esbuild": "0.28.2"

@@ -1,0 +1,177 @@
+/* Shared station profiles and the local friends ranking. */
+.social-panel { --social-line: #345062; }
+.social-panel .dialog-intro { max-width: 750px; }
+.social-overview { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; margin: 23px 0 32px; }
+.social-score-card { padding: 25px; background: #18343e; border: 1px solid #5b928b66; border-radius: 10px; min-width: 0; }
+.social-score-card > .eyebrow { color: #8ab7ac; }
+.social-score-number { display: flex; align-items: baseline; gap: 12px; margin: 22px 0 13px; }
+.social-score-number > strong { color: #e5d6b4; font-family: var(--mono); font-size: 46px; line-height: 1; font-weight: 400; letter-spacing: -2px; font-variant-numeric: tabular-nums; }
+.social-score-number > span { color: #7faaa6; font: 9px var(--mono); letter-spacing: 1.6px; }
+.social-score-card > h3 { color: #d2e5dc; font-size: 19px; line-height: 1.4; font-weight: 500; margin: 0; overflow-wrap: anywhere; }
+.social-score-card > p { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; color: #9ac2b1; font-size: 12px; margin: 10px 0 22px; }
+.social-rank-pill { border: 1px solid #80b6a13f; padding: 5px 8px; border-radius: 5px; background: #8dcab407; font: 9px var(--mono); }
+.social-score-card > .primary-button { width: 100%; justify-content: center; gap: 9px; font-size: 12px; }
+.social-score-card > .primary-button > .icon { margin: 0; height: 16px; width: 16px; }
+.social-score-card > small { font-size: 10px; color: #8bacac; display: block; line-height: 1.8; margin: 12px 0 0; }
+.social-link-details { margin-top: 17px; font-size: 10px; color: #8eaeae; }
+.social-link-details summary, .social-rules summary { cursor: pointer; line-height: 1.8; padding: 5px 0; }
+.social-link-details input { display: block; width: 100%; min-width: 0; padding: 10px; margin: 10px 0 7px; border: 1px solid #4e777b; border-radius: 5px; background: #102b34; color: #c2d6d1; font: 10px var(--mono); }
+.social-link-details > span { font-size: 9px; line-height: 1.8; display: block; color: #7ca6a6; }
+.social-breakdown { min-width: 0; border: 1px solid var(--social-line); border-radius: 10px; padding: 24px; background: #142738; }
+.social-breakdown > .eyebrow { color: #8ba5b1; font-size: 8px; }
+.social-category-score { display: flex; gap: 11px; align-items: center; border-bottom: 1px solid #35506166; padding: 17px 0; color: #9fb8c0; font-size: 12px; }
+.social-category-score > .icon { color: #9cc8ba; height: 17px; width: 17px; }
+.social-category-score > strong { margin-left: auto; font-family: var(--mono); color: #c8d9d7; font-weight: 400; font-size: 15px; font-variant-numeric: tabular-nums; }
+.social-rules { margin-top: 14px; color: #8cabba; font-size: 11px; }
+.social-rules ul { padding-left: 15px; margin: 12px 0; }
+.social-rules li { font-size: 10px; line-height: 1.9; margin-top: 9px; color: #8da9b8; }
+.social-rules b { font-weight: 500; color: #b1c7cd; }
+.social-rules p { font-size: 10px; line-height: 1.9; color: #829fae; margin: 13px 0 0; }
+.social-section-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin: 0 0 19px; }
+.social-section-heading h3 { font-size: 21px; font-weight: 450; letter-spacing: -.5px; color: #c1d8d5; margin: 9px 0 0; line-height: 1.4; }
+.social-section-heading h3 > span { display: inline-grid; place-items: center; min-width: 24px; height: 23px; background: #8bbca413; color: #92b8a7; border: 1px solid #81b39e2f; border-radius: 5px; font: 10px var(--mono); margin-left: 10px; vertical-align: middle; }
+.social-section-heading > .small-button { flex: none; font-size: 10px; }
+.social-import-form { padding: 17px; background: #132637; border: 1px solid #344e62; border-radius: 8px; margin-bottom: 17px; }
+.social-import-form > label { display: block; color: #a9c3c8; font-size: 11px; margin-bottom: 10px; }
+.social-import-form > div { display: flex; gap: 9px; }
+.social-import-form input { min-width: 0; flex: 1; width: 100%; color: #b9d3d5; font-size: 12px; border: 1px solid #3f6175; background: #0e2131; border-radius: 5px; padding: 11px 12px; }
+.social-import-form input::placeholder { color: #698e9f; }
+.social-import-form input[aria-invalid=true] { border-color: #b47f71; }
+.social-import-form .small-button { white-space: nowrap; padding: 10px 13px; font-size: 11px; }
+.social-inline-error { font-size: 11px; line-height: 1.8; color: #e1aa98; margin: 12px 0 0; }
+.social-filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.social-filter-tabs button { display: flex; gap: 6px; align-items: center; border: 1px solid #334d614f; border-radius: 5px; padding: 9px 11px; font-size: 10px; color: #819eaf; }
+.social-filter-tabs button .icon { height: 13px; width: 13px; }
+.social-filter-tabs button.active { border-color: #7ab49d5e; color: #a1cbb7; background: #84c5aa0e; }
+.social-ranking-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 7px; }
+.social-ranking-row { display: grid; grid-template-columns: 35px minmax(0,1fr) 90px 72px; gap: 12px; align-items: center; background: #14293a; border: 1px solid #344d60; border-radius: 7px; padding: 15px 13px; }
+.social-ranking-row.is-own { border-color: #6ba28c74; background: #1a343c; }
+.social-ranking-row.is-selected { border-color: #9e9bbb70; }
+.social-rank-number { font: 15px var(--mono); color: #7995a6; }
+.social-ranking-row.is-own .social-rank-number { color: #9ec3b3; }
+.social-station-identity { min-width: 0; }
+.social-station-identity > strong { display: block; font-size: 13px; font-weight: 500; color: #bdd4d8; line-height: 1.6; overflow-wrap: anywhere; }
+.social-station-identity > small { display: block; font-size: 9px; color: #87a0b1; margin-top: 5px; line-height: 1.7; }
+.social-you { display: inline-block; font: 7px var(--mono); border: 1px solid #87b49e51; border-radius: 3px; padding: 2px 4px; color: #94c8b0; margin-left: 8px; vertical-align: middle; }
+.social-ranking-points { text-align: right; }
+.social-ranking-points > strong { color: #d8cba7; font: 17px var(--mono); font-weight: 400; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.social-ranking-points > small { display: block; color: #849dae; font-size: 8px; margin-top: 5px; }
+.social-row-actions { display: flex; gap: 3px; justify-content: flex-end; align-items: center; }
+.social-row-actions .icon-button { min-width: 32px; height: 34px; }
+.social-row-actions .icon-button .icon { width: 15px; height: 15px; }
+.social-row-actions .social-remove { color: #8d8391; }
+.social-own-star { color: #9bc8b0; display: grid; place-items: center; min-width: 32px; height: 34px; }
+.social-own-star .icon { width: 18px; height: 18px; }
+.social-ranking-caption { font-size: 10px; line-height: 1.8; color: #7c98aa; margin: 12px 0 0; }
+.social-empty-state { display: flex; gap: 15px; padding: 24px 19px; border: 1px dashed #3c6472; border-radius: 8px; margin-top: 14px; background: #182d3633; }
+.social-empty-state > .icon { width: 30px; height: 30px; color: #86b9af; flex: none; margin-top: 3px; }
+.social-empty-state strong { font-size: 14px; font-weight: 500; color: #aecdc9; }
+.social-empty-state p { font-size: 12px; line-height: 1.9; color: #82a3ae; margin: 8px 0 0; }
+.social-comparison-section { margin-top: 31px; border-top: 1px solid #324e60; padding-top: 27px; }
+.social-comparison-gap { max-width: 230px; color: #b9aa83; font-size: 11px; line-height: 1.7; text-align: right; }
+.social-comparison-head { display: grid; grid-template-columns: 42px minmax(0,1fr) minmax(0,1fr); gap: 16px; align-items: start; border: 1px solid #3a5967; background: #162d3d; border-radius: 8px 8px 0 0; padding: 19px 17px; }
+.social-comparison-head > span { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid #83b8aa44; border-radius: 7px; color: #9bc9b7; background: #7db5a10b; }
+.social-comparison-head strong { display: block; color: #bbd5d4; font-size: 13px; font-weight: 500; line-height: 1.6; overflow-wrap: anywhere; }
+.social-comparison-head small { display: block; color: #83a1b0; font-size: 9px; line-height: 1.8; margin-top: 6px; }
+.social-comparison-table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 11px; background: #132738; }
+.social-comparison-table th, .social-comparison-table td { border-bottom: 1px solid #314c5d; padding: 13px 14px; line-height: 1.7; overflow-wrap: anywhere; }
+.social-comparison-table thead th { font-size: 9px; color: #819eae; text-align: right; background: #112432; font-weight: 500; }
+.social-comparison-table thead th:first-child { text-align: left; width: 40%; }
+.social-comparison-table tbody th { color: #9bb8c1; text-align: left; font-weight: 400; }
+.social-comparison-table td { color: #b8cdd1; text-align: right; font-family: var(--mono); font-size: 12px; font-variant-numeric: tabular-nums; }
+.social-comparison-table td .icon { width: 15px; height: 15px; margin-left: auto; }
+.social-comparison-table td.positive { color: #9fceaf; }
+.social-comparison-table td.negative { color: #c7a2a1; }
+.social-comparison-table td.equal { color: #6e8fa1; }
+.social-storage-note { margin: 25px 0 0; font-size: 10px; color: #7c99a8; line-height: 1.9; }
+.social-invitation { padding: 19px 20px; border: 1px solid #a498c762; background: #51496922; border-radius: 9px; margin-bottom: 23px; }
+.social-invitation > div:first-child { display: flex; gap: 10px; align-items: start; color: #b9addb; }
+.social-invitation > div > strong { font-size: 14px; font-weight: 500; color: #c6c4df; line-height: 1.7; overflow-wrap: anywhere; }
+.social-invitation > div > .icon { width: 22px; height: 22px; margin-top: 2px; }
+.social-invitation p { font-size: 11px; line-height: 1.8; color: #9b99b9; margin: 10px 0 15px; }
+.social-invitation-actions { display: flex; gap: 17px; align-items: center; flex-wrap: wrap; }
+.social-invitation-actions .text-button { color: #9b96b3; font-size: 10px; }
+.social-invitation.error { border-color: #bd8b6f66; background: #9c745b10; }
+.welcome-shared { margin: 0 0 23px; padding: 17px; border: 1px solid #8e8ab65c; background: #38394f66; border-radius: 7px; max-width: 420px; }
+.welcome-shared .eyebrow { font-size: 7px; color: #a29dbb; letter-spacing: .8px; }
+.welcome-shared p { font-size: 12px; line-height: 1.8; color: #99b3bd; margin: 10px 0 12px; }
+.welcome-shared strong, .welcome-shared b { font-weight: 500; color: #cdc5df; }
+.welcome-shared .small-button { font-size: 11px; min-height: 37px; }
+@media(max-width:850px) {
+  .bottom-nav .main-tabs { flex: 1; gap: 0; justify-content: space-around; }
+  .bottom-nav .main-tabs button { padding-left: 9px; padding-right: 9px; }
+}
+@media(max-width:620px) {
+  .social-overview { grid-template-columns: minmax(0,1fr); gap: 16px; margin-bottom: 26px; }
+  .social-score-card { padding: 23px; }
+  .social-score-number > strong { font-size: 44px; }
+  .social-score-card > h3 { font-size: 22px; }
+  .social-score-card > p { font-size: 13px; }
+  .social-score-card > .primary-button { font-size: 13px; min-height: 46px; padding: 12px 11px; }
+  .social-score-card > small { font-size: 11px; }
+  .social-link-details { font-size: 12px; }
+  .social-link-details input { font-size: 11px; min-height: 42px; }
+  .social-link-details > span { font-size: 10px; }
+  .social-breakdown { padding: 22px; }
+  .social-category-score { font-size: 13px; padding: 16px 0; }
+  .social-category-score > strong { font-size: 17px; }
+  .social-rules { font-size: 12px; }
+  .social-rules li, .social-rules p { font-size: 11px; }
+  .social-section-heading { gap: 12px; align-items: start; flex-wrap: wrap; }
+  .social-section-heading h3 { font-size: 23px; }
+  .social-section-heading > .small-button { font-size: 11px; min-height: 40px; }
+  .social-import-form { padding: 16px; }
+  .social-import-form > label { font-size: 12px; }
+  .social-import-form > div { flex-direction: column; }
+  .social-import-form input { flex: none; min-height: 45px; font-size: 12px; padding: 12px 10px; }
+  .social-import-form .small-button { min-height: 43px; font-size: 12px; }
+  .social-inline-error { font-size: 12px; }
+  .social-filter-tabs { gap: 6px; }
+  .social-filter-tabs button { min-height: 39px; padding: 9px 10px; font-size: 10px; }
+  .social-filter-tabs button .icon { height: 13px; width: 13px; }
+  .social-ranking-row { grid-template-columns: 26px minmax(0,1fr) 65px; gap: 9px; padding: 14px 11px; }
+  .social-rank-number { font-size: 13px; }
+  .social-station-identity > strong { font-size: 12px; }
+  .social-station-identity > small { font-size: 9px; }
+  .social-ranking-points > strong { font-size: 16px; }
+  .social-ranking-points > small { font-size: 8px; }
+  .social-you { font-size: 6px; margin-left: 6px; }
+  .social-row-actions { grid-column: 2 / -1; justify-content: flex-start; padding-top: 2px; }
+  .social-row-actions .icon-button { min-width: 40px; height: 39px; border: 1px solid #355064; }
+  .social-row-actions .icon-button .icon { height: 17px; width: 17px; }
+  .social-row-actions .social-own-star { display: none; }
+  .social-ranking-row.is-own .social-row-actions { display: none; }
+  .social-ranking-caption, .social-storage-note { font-size: 11px; }
+  .social-empty-state { padding: 21px 15px; gap: 12px; }
+  .social-empty-state p { font-size: 12px; }
+  .social-empty-state strong { font-size: 15px; }
+  .social-empty-state > .icon { height: 26px; width: 26px; }
+  .social-comparison-gap { max-width: none; text-align: left; font-size: 12px; }
+  .social-comparison-head { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 13px; padding: 17px 13px; }
+  .social-comparison-head > span { display: none; }
+  .social-comparison-head strong { font-size: 12px; }
+  .social-comparison-head small { font-size: 9px; }
+  .social-comparison-table th, .social-comparison-table td { padding: 11px 6px; font-size: 10px; }
+  .social-comparison-table thead th { font-size: 8px; }
+  .social-comparison-table thead th:first-child { width: 39%; }
+  .social-comparison-table td { font-size: 11px; }
+  .social-invitation { padding: 17px; }
+  .social-invitation > div > strong { font-size: 13px; }
+  .social-invitation p { font-size: 11px; }
+  .social-invitation-actions .small-button { font-size: 11px; min-height: 42px; }
+  .social-invitation-actions .text-button { font-size: 11px; min-height: 36px; }
+  .welcome-shared { padding: 15px; }
+  .welcome-shared p { font-size: 12px; }
+  .welcome-shared .eyebrow { font-size: 6px; }
+  .welcome-shared .small-button { font-size: 12px; min-height: 41px; }
+  .bottom-nav .main-tabs button { min-width: 42px; font-size: 8px; padding-left: 4px; padding-right: 4px; }
+}
+@media(max-width:370px) {
+  .bottom-nav .main-tabs button { min-width: 36px; font-size: 6.5px; gap: 6px; padding-left: 3px; padding-right: 3px; }
+  .bottom-nav .main-tabs button .icon { height: 17px; width: 17px; }
+  .social-score-card { padding: 19px; }
+  .social-score-card > .primary-button { font-size: 11px; }
+  .social-section-heading h3 { font-size: 20px; }
+  .social-ranking-row { grid-template-columns: 23px minmax(0,1fr) 57px; gap: 7px; padding: 12px 9px; }
+  .social-filter-tabs button { font-size: 9px; padding: 8px; }
+}
