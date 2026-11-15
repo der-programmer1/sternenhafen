@@ -11,11 +11,14 @@ export class SocialUI{
   constructor({getGame,isStarted,onOpen,onRerender,toast,beforeShare}){
     this.getGame=getGame;this.isStarted=isStarted;this.onOpen=onOpen;this.onRerender=onRerender;this.toast=toast;this.beforeShare=beforeShare;
     this.friends=[];this.category='total';this.selectedId=null;this.pending=null;this.linkError='';this.storageWarning='';this.signature='';
-    this.readStorage();
+    this.readStorage();this.loadInvitation();this.bind();
+  }
+  loadInvitation(){
+    this.pending=null;this.linkError='';
     if(hasSharedProfile(location.href)){
       try{this.pending=readSharedProfile(location.href);this.selectedId=this.pending.id;}catch(error){this.linkError=error.message;}
     }
-    this.renderWelcome();this.bind();
+    this.renderWelcome();
   }
   readStorage(){
     try{const raw=localStorage.getItem(STORAGE_KEY);if(raw&&raw.length>150000)throw new Error('size');this.friends=cleanFriends(raw?JSON.parse(raw):[]);}
@@ -132,5 +135,6 @@ export class SocialUI{
     });
     document.addEventListener('input',event=>{if(event.target.id==='profile-link-input'){event.target.removeAttribute('aria-invalid');$('#profile-import-error').hidden=true;}});
     window.addEventListener('storage',event=>{if(event.key===STORAGE_KEY){this.readStorage();this.rerender();}});
+    window.addEventListener('hashchange',()=>{this.loadInvitation();if(this.hasInvitation()&&this.isStarted())this.onOpen();else this.rerender();});
   }
 }

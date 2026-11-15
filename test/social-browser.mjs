@@ -46,6 +46,9 @@ try{
   const savedBeta=await state(beta);await beta.reload();await beta.locator('#start-button').click();await openRanking(beta);assert.equal((await state(beta)).stationId,betaId);assert.equal((await state(beta,FRIENDS))[0].stats.modules,4);assert.equal(await beta.locator('.social-ranking-row').count(),2);
   console.log('✓ Ein neuer Link aktualisiert dieselbe Station; alte Links und Neuladen verlieren keinen Fortschritt');
 
+  await close(beta);await beta.evaluate(hash=>location.hash=hash,new URL(newerLink).hash);await beta.locator('#social-panel').waitFor({state:'visible'});assert.match(await beta.locator('#social-invitation').innerText(),/Ägir · Zweiter Stand/);assert.equal((await state(beta)).stationId,betaId);await beta.locator('#social-invitation [data-social="remember"]').click();assert.equal(await beta.locator('#social-invitation').innerText(),'');assert.equal((await state(beta,FRIENDS)).length,1);assert.equal(await beta.evaluate(()=>location.hash),'');
+  console.log('✓ Ein Link öffnet den Vergleich auch im laufenden Spiel, ohne die eigene Station zu ersetzen');
+
   const beforeFriends=JSON.stringify(await state(beta,FRIENDS));await paste(beta,'https://example.org/#station=SH1.bad');assert.equal(JSON.stringify(await state(beta,FRIENDS)),beforeFriends);assert.equal(await beta.locator('#profile-import-error').isVisible(),true);assert.equal((await state(beta)).stationId,betaId);
   const hostile={...newer,id:'hostile-station-01',name:'<svg onload=z=1>'};await paste(beta,makeShareLink(hostile));assert.equal(await beta.locator('svg[onload]').count(),0);assert.equal(await beta.evaluate(()=>window.z),undefined);assert.match(await beta.locator('#social-ranking').innerText(),/<svg onload=z=1>/);await beta.locator('[data-social="remove"][data-profile="hostile-station-01"]').click();assert.equal((await state(beta,FRIENDS)).length,1);
   console.log('✓ Beschädigte Links verändern keine Daten; fremde Namen werden als Text angezeigt');
