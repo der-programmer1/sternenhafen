@@ -2,6 +2,8 @@
 
 **Dein Licht am Rand des Alls.** Ein vollständiges kleines Browser-Aufbauspiel: Aus einem Außenposten mit zwei Modulen wird ein lebendiger Hafen im Lyra-Sektor.
 
+[Im Browser spielen](https://der-programmer1.github.io/sternenhafen/) · [HTML-Version als ZIP herunterladen](https://der-programmer1.github.io/sternenhafen/downloads/Sternenhafen-HTML.zip)
+
 ![Eine ausgebaute Station in Sternenhafen](assets/preview.png)
 
 ## Spielen
@@ -54,10 +56,10 @@ Das Spiel ist statisch und funktioniert auch unter einem Repository-Unterpfad. K
 
 1. Den Quellcode auf den Standardbranch `main` pushen.
 2. Im Repository **Settings → Pages → Build and deployment** öffnen.
-3. **Deploy from a branch**, Branch **main**, Ordner **/(root)** wählen und speichern.
-4. Warten, bis GitHub Pages den erfolgreichen Build meldet. Erst dann die von GitHub angegebene URL verwenden.
+3. Als Source **GitHub Actions** auswählen.
+4. Der Workflow `Publish Sternenhafen` prüft das Spiel, baut Website und Einzeldatei und veröffentlicht die Ausgabe auf GitHub Pages. Nach jedem weiteren Push auf `main` läuft er erneut.
 
-Die Datei `.nojekyll` ist enthalten. Alternativ erzeugt `npm run build` ein sauberes Verzeichnis `dist/`, das auf jedem gewöhnlichen statischen Webhost bereitgestellt werden kann. Es sind keine GitHub Actions und keine Serverfunktionen erforderlich.
+Die Datei `.nojekyll` ist enthalten. Alternativ erzeugt `npm run build` ein sauberes Verzeichnis `dist/`, das auf jedem gewöhnlichen statischen Webhost bereitgestellt werden kann. Serverfunktionen sind nicht erforderlich. Die Pages-Ausgabe enthält unter `downloads/` zusätzlich die Einzeldatei als HTML und ZIP.
 
 ## Prüfen und bauen
 
